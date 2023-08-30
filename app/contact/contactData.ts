@@ -1,10 +1,7 @@
-import { ReactNode } from "react";
-import Image from "next/image";
 import phoneIcon from '../assets/images/phone.icon.svg';
 import emailIcon from '../assets/images/email.icon.svg';
 import locationIcon from '../assets/images/location.icon.svg';
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
-
 
 type ContactData = {
     name: string;

@@ -15,6 +15,8 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  cursor: pointer;
+  
 }
 
 .navigationItem button {
@@ -31,18 +33,43 @@
   line-height: 30px;
   color: #fff;
   background-color: transparent;
-  
-}
-
-.navigationItem:hover,
-.navigationItem button:hover {
-  font-weight: bold;
 }
 
 .rootSubLinks {
 }
 
 .subLinks {
+}
+
+.label {
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  line-height: 32px;
+  height: 32px;
+}
+
+.label > div {
+  display: flex;
+  position: relative;
+  left: 0;
+}
+
+.label > div:nth-child(1) {
+  top: 0;
+}
+
+.label > div:nth-child(2) {
+  font-weight: bold;
+  top: 100%;
+}
+
+.label:hover > div:nth-child(1) {
+  top: -100%;
+}
+
+.label:hover > div:nth-child(2) {
+  top: -100%;
 }
 
 .active {
@@ -61,12 +88,12 @@
     position: relative;
     display: flex;
     align-items: center;
-   
   }
   
   .navigationItem {
     color: #000;
     display: flex;
+    flex-direction: column;
   }
   
   .navigationItem button {

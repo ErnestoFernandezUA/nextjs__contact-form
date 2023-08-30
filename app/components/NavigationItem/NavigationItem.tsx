@@ -75,7 +75,10 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
               roboto.className,
             { [styles.active] : isActive })}
           >
-            {children || label}
+            <div className={styles.label}>
+              <div>{children || label}</div>
+              <div>{children || label}</div>
+            </div>
             
             <div className={styles.arrow}>
               {(isShowParent 
@@ -115,7 +118,10 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
           styles.navigationItem, 
           { [styles.active] : isActive })}
       >
-        {children || label}
+        <div className={styles.label}>
+            <div>{children || label}</div>
+            <div>{children || label}</div>
+        </div>
       </Link>
     </div>
   )

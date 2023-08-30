@@ -95,7 +95,7 @@ export default function Contact() {
               
               <div className={styles.links}>
                 {contactData.map(el => (
-                  <a href={el.href} key={el.label}>
+                  <a href={el.href} key={el.label} target="_blank">
                     <Image src={el.icon} alt={el.label} />
                     {el.label}
                   </a>
