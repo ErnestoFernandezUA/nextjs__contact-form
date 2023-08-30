@@ -17,20 +17,12 @@ export const Footer = () => {
         <div className={styles.footerBlock}>
           <h4>Reach Us</h4>
 
-          <a href="" className={styles.link}>
-            <Image src={phone} alt="Phone Icon" />
-            {contactData.phone}
-          </a>
-
-          <a href="" className={styles.link}>
-            <Image src={email} alt="Email Icon" />
-            {contactData.email}
-          </a>
-
-          <a href="" className={styles.link}>
-            <Image src={location} alt="Location Icon" />
-            {contactData.address}
-          </a>
+          {contactData.map(el => (
+            <a href={el.href} key={el.label} className={styles.link}>
+              <Image src={el.icon} alt={el.label} />
+              {el.label}
+            </a>
+          ))}
         </div>
 
         <div className={styles.footerBlock}>
@@ -39,7 +31,6 @@ export const Footer = () => {
           <Link href={routesConfig.about.path}>{routesConfig.about.label}</Link> 
           <Link href={routesConfig.contact.path}>{routesConfig.contact.label}</Link>
           <Link href={routesConfig.blog.path}>{routesConfig.blog.label}</Link>
-
         </div>
 
         <div className={styles.footerBlock}>
