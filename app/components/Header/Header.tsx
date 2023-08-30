@@ -6,7 +6,6 @@ import { Inter } from 'next/font/google'
 import classNames from 'classnames';
 import styles from './Header.module.css';
 import Image from 'next/image';
-import { PopupMenu } from '../PopupMenu/PopupMenu';
 import menu from './../../assets/images/menu.icon.svg';
 import logoImage from './../../assets/images/menu.icon.svg';
 import closeMenu from './../../assets/images/closeMenu.icon.svg';
