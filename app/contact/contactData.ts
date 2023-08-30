@@ -14,7 +14,7 @@ export const contactData: ContactData = [
   {
     name: 'phone',
     label: '+1012 3456 789',
-    href: '+1012 3456 789',
+    href: 'tel:+1012 3456 789',
     icon: phoneIcon,
   },
   {

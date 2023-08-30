@@ -20,6 +20,7 @@ import { InstagramIcon } from "../components/UI/Icons/InstagramIcon";
 import { RadioZone } from "../components/UI/RadioZone/RadioZone";
 import { maskPhone, unMaskPhone } from "../utils/maskPhoneNumber";
 import { socialLinks } from "../constants/socialLinks";
+import { SocialLinks } from "../components/SocialLinks/SocialLinks";
 
 const mockDataRadio = [
   {label: 'General Inquiry', value: '1'},
@@ -40,23 +41,23 @@ const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('First Name is required'),
   lastName: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Required'),
+    .required('Last Name is required'),
   email: Yup.string()
     .email('Invalid email')
-    .required('Required'),
+    .required('Email is required'),
   phone: Yup.number()
     .integer()
-    .moreThan(100000000000, 'no correct number')
-    .lessThan(999999999999, 'no correct number')
+    .moreThan(10000000000, 'To short number')
+    .lessThan(99999999999, 'No correct number')
     .required('Required'),
   subject: Yup.string()
     .required('Subject value required'),
   message: Yup.string()
-    .required('Required'),
+    .required('Message is required'),
 });
 
 export default function Contact() {
@@ -94,20 +95,32 @@ export default function Contact() {
               </div>
               
               <div className={styles.links}>
-                {contactData.map(el => (
-                  <a href={el.href} key={el.label} target="_blank">
-                    <Image src={el.icon} alt={el.label} />
-                    {el.label}
-                  </a>
-                ))}
+                <SocialLinks />
               </div>
 
               {/* <Image src={ellipse} alt="ellipse" className={styles.ellipse} /> */}
 
               <div className={styles.socialIcons}>
-                <a href={socialLinks.twitter}><TwitterIcon theme={Theme.dark} /></a>
-                <a href={socialLinks.discord}><DiscordIcon theme={Theme.dark} /></a>
-                <a href={socialLinks.instagram}><InstagramIcon theme={Theme.dark} /></a>
+                <a 
+                  href={socialLinks.twitter} 
+                  target="_blank"
+                >
+                  <TwitterIcon theme={Theme.dark} />
+                </a>
+
+                <a 
+                  href={socialLinks.discord} 
+                  target="_blank"
+                >
+                  <DiscordIcon theme={Theme.dark} />
+                </a>
+
+                <a 
+                  href={socialLinks.instagram} 
+                  target="_blank"
+                >
+                  <InstagramIcon theme={Theme.dark} />
+                </a>
               </div>
             </fieldset>
 

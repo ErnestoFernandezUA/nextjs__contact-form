@@ -7,6 +7,7 @@ import { contactData } from "./../../contact/contactData";
 import Link from 'next/link';
 import { routesConfig } from '../Navigation/navigationConfig';
 import { Subscribe } from '../Subscribe/Subscribe';
+import { SocialLinks } from '../SocialLinks/SocialLinks';
 
 export const Footer = () => {
   return (
@@ -17,19 +18,18 @@ export const Footer = () => {
         <div className={styles.footerBlock}>
           <h4>Reach Us</h4>
 
-          {contactData.map(el => (
-            <a href={el.href} key={el.label} className={styles.link}>
-              <Image src={el.icon} alt={el.label} />
-              {el.label}
-            </a>
-          ))}
+          <SocialLinks />
         </div>
 
         <div className={styles.footerBlock}>
           <h4>Company</h4>
 
-          <Link href={routesConfig.about.path}>{routesConfig.about.label}</Link> 
-          <Link href={routesConfig.contact.path}>{routesConfig.contact.label}</Link>
+          <Link href={routesConfig.about.path}>
+            {routesConfig.about.label}
+          </Link> 
+          <Link href={routesConfig.contact.path}>
+            {routesConfig.contact.label}
+          </Link>
           <Link href={routesConfig.blog.path}>{routesConfig.blog.label}</Link>
         </div>
 
