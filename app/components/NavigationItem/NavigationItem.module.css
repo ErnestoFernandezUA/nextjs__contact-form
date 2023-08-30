@@ -79,7 +79,7 @@
 
 .arrow {
   display: flex;
-  transform: translateY(2px);
+  transform: translateY(1px);
   padding-left: 5px;
 }
 
