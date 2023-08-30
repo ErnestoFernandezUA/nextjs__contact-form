@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { NavigationItem } from '../NavigationItem/NavigationItem';
 import { routesConfig } from './navigationConfig';
 import styles from './Navigation.module.css';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import userLogo from './../../assets/images/user.icon.svg';
 import userInverseLogo from './../../assets/images/userInverse.icon.svg';
@@ -16,17 +16,18 @@ export enum isVisible {
 }
 
 interface NavigationProps {
-  className?: string | null;
+  className?: string;
   isShowMenu: boolean;
   toggleHandlerMenu: (e: React.MouseEvent<Element, MouseEvent>, forceValue?: boolean) => void;
 }
 
 export const Navigation:React.FC<NavigationProps> = ({
-  className, isShowMenu, toggleHandlerMenu,
+  className = '', isShowMenu, toggleHandlerMenu,
 }) => {
+  const navRef = useRef<HTMLDivElement>(null);
   const [isRootShow, setIsRootShow] = useState<isVisible>(isVisible.hidden);
 
-  const rootToggleHandler = (event: React.MouseEvent, forceValue? : isVisible) => {
+  const rootToggleHandler = (event: MouseEvent | React.MouseEvent<Element, MouseEvent>, forceValue? : isVisible) => {
     event.stopPropagation();
 
     typeof forceValue !== 'undefined' 
@@ -34,12 +35,28 @@ export const Navigation:React.FC<NavigationProps> = ({
     : setIsRootShow(v => v === isVisible.show 
       ? isVisible.hidden 
       : isVisible.show);
-  }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent):void => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        rootToggleHandler(event as MouseEvent, isVisible.hidden);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []); 
   
   return (
-    <nav 
+    <nav
+      ref={navRef} 
       className={classNames(styles.navigation, 
-        { [styles.active]: isShowMenu })}
+        { [styles.active]: isShowMenu },
+        className)}
     >
       <div className={classNames(styles.navContainer)}>
         <NavigationItem 

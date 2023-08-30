@@ -1,18 +1,5 @@
-.radio {
-  color: #000;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  white-space: nowrap;
-}
-
-.radio input {
-  display: none;
+.textarea {
+  position: relative;
 }
 
 .textarea label {
@@ -38,14 +25,13 @@
   line-height: 35px;
 }
 
-
 .text {
   padding: 0;
   margin: 0;
   /* display: flex; */
   /* flex-direction: column; */
   /* align-items: left; */
-  /* position: relative; */
+  position: relative;
   /* border: 1px solid red; */
   box-sizing: content-box;
   width: 100%;
@@ -58,7 +44,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 20px;
-  max-width: calc(100vw);
 }
 
 .text input {
@@ -82,38 +67,35 @@
 .text input:focus {
   outline: none;
   border-bottom: 1px solid #000;
+  color: #000;
 }
 
 .error {
   position: absolute;
-  bottom: -20px;
-  left: 10px;
+  bottom: -18px;
+  left: 0px;
   color: red;
-  font-size: 13px;
   font-style: normal;
+  font-size: 12px;
   font-weight: 500;
-  line-height: normal;
+  line-height: 20px;
 }
 
+.textarea .error {
+  bottom: -11px;
+}
+
+.withValue label {
+  font-weight: 500;
+  color: #000;
+}
+
+/* .withValue input,
+.withValue textarea {
+  color: #000;
+} */
+
 @media screen and (min-width: 768px) {
-  .radio {
-    color: #000;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-  
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    white-space: nowrap;
-  }
-  
-  .radio input {
-    display: none;
-  }
-  
-  
   .textarea label {
     color: #8D8D8D;
     font-size: 12px;
@@ -135,8 +117,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 35px;
-  }
-  
+  }  
   
   .text {
     padding: 0;
@@ -165,9 +146,9 @@
     width: 100%;
   }
   
-  .active {
+  /* .active {
     color: #000;
-  }
+  } */
   
   .textarea textarea:focus,
   .text input:focus {
@@ -184,5 +165,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+  }
+
+  .withValue label {
+    font-weight: 500;
+    color: #000;
   }
 }

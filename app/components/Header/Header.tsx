@@ -1,19 +1,19 @@
 'use client'
 
 import { useState } from 'react';
-import { Navigation } from '../Navigation/Navigation';
+import Image from 'next/image';
 import { Inter } from 'next/font/google'
 import classNames from 'classnames';
-import styles from './Header.module.css';
-import Image from 'next/image';
-import menu from './../../assets/images/menu.icon.svg';
-import logoImage from './../../assets/images/menu.icon.svg';
+import { Navigation } from '../Navigation/Navigation';
 import closeMenu from './../../assets/images/closeMenu.icon.svg';
+import menu from './../../assets/images/menu.icon.svg';
+import styles from './Header.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const Header = () => {
   const [isShow, setIsShow] = useState<boolean>(false);
+  
   const toggleHandlerMenu = (e: React.MouseEvent<Element, MouseEvent>, forceValueMenu?: boolean) => {
     if (typeof forceValueMenu !== 'undefined') {
       setIsShow(forceValueMenu);
@@ -23,8 +23,6 @@ export const Header = () => {
     setIsShow(value => !value);
   }
 
-
-
   return (
     <div className={styles.header}>
       <div className={styles.container}>
@@ -32,12 +30,6 @@ export const Header = () => {
           <a className={classNames(styles.logo, inter.className,
             {[styles.active]: isShow})}>
             Logo Here
-
-            {/* <Image 
-              src={logoImage} 
-              alt="logo"
-              className={styles.logoImage}
-            /> */}
           </a>
           
           <Image 

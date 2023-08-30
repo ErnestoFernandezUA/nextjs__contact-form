@@ -1,42 +1,37 @@
 'use client'
 
 import { ChangeEvent, useState } from 'react';
-import Image from "next/image";
-import signed from '../../../assets/images/signed.icon.svg';
-import noSigned from '../../../assets/images/noSigned.icon.svg';
-import styles from './Input.module.css';
 import { Poppins } from "next/font/google";
+import classNames from 'classnames';
+import styles from './InputText.module.css';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['500'] });
 
-export enum InputType {
+export enum InputTextType {
   text = 'text',
   email = 'email',
   password = 'password',
-  checkbox = 'checkbox',
-  radio = 'radio',
   textarea = 'textarea',
 }
 
-interface NavigationItemProps {
+interface InputTextProps {
   label: string;
   id: string;
   name: string;
-  type: InputType;
+  type: InputTextType;
   onChange: (e: ChangeEvent<any>) => void;
   value: string;
   className?: string;
   placeholder?: string;
   rows?: number;
 
-  isSelected?: boolean;
   error?: string,
   touched?: boolean,
   mask?: (value: string) => string;
   unMask?: (value: string) => string;
 }
 
-export const Input: React.FC<NavigationItemProps> = ({
+export const InputText: React.FC<InputTextProps> = ({
   label,
   id,
   name,
@@ -47,13 +42,14 @@ export const Input: React.FC<NavigationItemProps> = ({
   placeholder,
   rows = 1, 
 
-  isSelected,
   error,
   touched,
 
   mask,
   unMask,
 }) => {
+  const isValue = !!valueProps;
+
   const onChange = (e: ChangeEvent<any>) => unMask 
     ? onChangeProps({
         ...e,
@@ -67,11 +63,11 @@ export const Input: React.FC<NavigationItemProps> = ({
   
   const value = typeof mask !== 'undefined' ? mask(valueProps) : valueProps;
 
-  if (type === InputType.textarea) {
+  if (type === InputTextType.textarea) {
     return (
-      <div className={styles.textarea}>
+      <div className={classNames(styles.textarea,
+      { [styles.withValue]: isValue })}>
         <label htmlFor={id}>{label}</label>
-        <br/>
 
         <textarea
           id={id}
@@ -82,46 +78,32 @@ export const Input: React.FC<NavigationItemProps> = ({
           placeholder={placeholder}
           rows={rows}
         />
-        {error && touched ? <div>{error}</div> : null}
+
+        {error && touched ? <div className={styles.error}>{error}</div> : null}
       </div>
     );
   }
 
-  if (type === InputType.radio) {
-    return (
+  return (
+    <div className={classNames(styles.text,
+      { [styles.withValue]: isValue })}
+    >
       <label 
-        className={styles.radio}
+        htmlFor={id}
+        className={poppins.className}
       >
-        <input
-          id={id}
-          name={name}
-          type={type}
-          onChange={onChange}
-          value={value}
-          className={className}
-        />
-  
-        <Image 
-          src={isSelected ? signed : noSigned} 
-          alt={isSelected ? "signed-icon" : "no-signed-icon"} 
-        />
- 
         {label}
       </label>
-    );
-  }
 
-  return (
-    <div className={styles.text}>
-      <label htmlFor={id}>{label}</label>
       <input
         id={id}
         name={name}
         type={type}
         onChange={onChange}
         value={value}
-        className={className}
+        className={classNames(poppins.className,className)}
       />
+
       {error && touched ? (
         <div className={styles.error}>{error}</div>
       ) : null}

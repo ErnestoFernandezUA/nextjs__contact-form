@@ -1,37 +1,57 @@
-import styles from './RadioZone.module.css';
-import Image from "next/image";
-import signed from '../../../assets/images/signed.icon.svg';
-import noSigned from '../../../assets/images/noSigned.icon.svg';
-import { Input, InputType } from '../Input/Input';
 import { ChangeEvent } from 'react';
+import { InputRadio, InputRadioType } from '../InputRadio/InputRadio';
+import { Poppins } from 'next/font/google';
+import styles from './RadioZone.module.css';
+import classNames from 'classnames';
 
-
-
+const poppins = Poppins({ subsets: ['latin'], weight: ['500'] });
 interface RadioZoneProps {
   data: {label: string, value: string}[];
-  selected: string;
+  value: string;
   onChange: any;
   title?: string;
+  name: string;
+  error?: string,
+  touched?: boolean,
 }
 
-export const RadioZone: React.FC<RadioZoneProps> = ({ onChange, selected, data, title }) => {
+export const RadioZone: React.FC<RadioZoneProps> = ({ 
+  onChange, 
+  value: selectedValue, 
+  data, 
+  title, 
+  name,
+  error,
+  touched,
+}) => {
+  const isValue = !!selectedValue;
+
   return (
     <div className={styles.radioZone}>
-      <h4 className={styles.title}>{title}</h4>
+      <h4 className={classNames(poppins.className, 
+        styles.title,
+        { [styles.withValue]: isValue })}
+      >
+          {title}
+      </h4>
 
       <div className={styles.radioZoneContainer}>
         {data.map(v => (
-          <Input
+          <InputRadio
             key={v.value} 
-            id="subject" 
+            id={v.value} 
             label={v.label} 
-            name="subject" 
-            type={InputType.radio} 
+            name={name} 
+            type={InputRadioType.radio} 
             onChange={onChange} 
             value={v.value}
-            isSelected={v.value === selected}            
+            selected={selectedValue}            
           />))}
       </div>
+
+      {error && touched ? (
+        <div className={styles.error}>{error}</div>
+      ) : null}
     </div>
   );
 };

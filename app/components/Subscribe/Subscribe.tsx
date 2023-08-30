@@ -1,12 +1,9 @@
 'use client'
 
-import { useState } from 'react';
-import { Navigation } from '../Navigation/Navigation';
-import { IoMenu } from "react-icons/io5";
 import { Inter, Manrope, Poppins } from 'next/font/google'
 import classNames from 'classnames';
 import styles from './Subscribe.module.css';
-import { Form, Formik, useFormik } from 'formik';
+import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 
 const inter = Inter({ subsets: ['latin'] });

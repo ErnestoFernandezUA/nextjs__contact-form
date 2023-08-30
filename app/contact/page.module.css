@@ -36,6 +36,7 @@
   user-select: none;
   overflow: hidden;
   position: relative;
+  margin-bottom: 50px;
 }
 
 .form > * {
@@ -119,29 +120,23 @@
 }
 
 .whiteSide {
-  /* display: block; */
-  /* max-width: 300px; */
-  /* display: flex;
-  flex-direction: column; */
-  /* align-content: start; */
   padding: 30px 16px;
-  /* gap: 20px; */
   box-sizing: border-box;
   margin: 0;
-  /* position: relative; */
-  /* width: 100%; */
+  position: relative;
 }
 
-.whiteSide > * {
+.whiteSide > *:not(:last-child) {
   margin-bottom: 20px;
 }
 
 .submitContainer {
   display: flex;
   align-items: baseline;
-  justify-content: end;
+  justify-content: flex-end;
   position: relative;
   height: 93px;
+  /* border: 1px solid red; */
 }
 
 .submit {
@@ -206,7 +201,6 @@
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
-    
   }
   
   .blackSide h2 {
@@ -245,12 +239,15 @@
   .links a {
     line-height: 24px;
     display: flex;
+    align-items: flex-start;
+    flex-direction: row;    
     gap: 25px;
   }
   
   .socialIcons {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 24px;
   }
   
@@ -263,9 +260,11 @@
   .whiteSide {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-content: start;
+    align-content: flex-start;
     padding: 50px;
     gap: 40px 45px;
+    flex: 1;
+
   }
   
   .whiteSide > :nth-child(n + 5) {
@@ -275,8 +274,8 @@
   .submitContainer {
     display: flex;
     align-items: baseline;
-    justify-content: end;
-    /* position: relative; */
+    justify-content: flex-end;
+    position: relative;
   }
   
   .submit {
@@ -286,6 +285,7 @@
     box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.12);
     padding: 15px 48px;
     cursor: pointer;
+    width: fit-content;
   }
   
   .paperPlane {

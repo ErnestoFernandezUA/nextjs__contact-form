@@ -13,7 +13,7 @@ import ellipse from '../assets/images/ellipse.svg';
 import paperPlane from '../assets/images/paper-plane.png';
 import classNames from "classnames";
 import { Poppins } from "next/font/google";
-import { Input, InputType } from "../components/UI/Input/Input";
+import { InputText, InputTextType } from "../components/UI/InputText/InputText";
 import { Theme, TwitterIcon } from "../components/UI/Icons/TwitterIcon";
 import { DiscordIcon } from "../components/UI/Icons/DiscordIcon";
 import { InstagramIcon } from "../components/UI/Icons/InstagramIcon";
@@ -53,7 +53,9 @@ const SignUpSchema = Yup.object().shape({
     .moreThan(100000000000, 'no correct number')
     .lessThan(999999999999, 'no correct number')
     .required('Required'),
-  subject: Yup.number()
+  subject: Yup.string()
+    .required('Subject value required'),
+  message: Yup.string()
     .required('Required'),
 });
 
@@ -70,10 +72,10 @@ export default function Contact() {
 
       <Formik
         initialValues={{
-          firstName: '12',
-          lastName: '12312',
-          email: '12@12312.21',
-          phone: '123456789012',
+          firstName: '',
+          lastName: 'Doe',
+          email: '',
+          phone: '10123456789',
           subject: '',
           message: '',
         }}
@@ -108,7 +110,7 @@ export default function Contact() {
                 </a>
               </div>
 
-              <Image src={ellipse} alt="ellipse" className={styles.ellipse} />
+              {/* <Image src={ellipse} alt="ellipse" className={styles.ellipse} /> */}
 
               <div className={styles.socialIcons}>
                 <a href={socialLinks.twitter}><TwitterIcon theme={Theme.dark} /></a>
@@ -118,44 +120,44 @@ export default function Contact() {
             </fieldset>
 
             <fieldset className={styles.whiteSide}>
-              <Input
+              <InputText
                 label="First Name"
                 id="firstName"
                 name="firstName"
-                type={InputType.text}
+                type={InputTextType.text}
                 onChange={handleChange}
                 value={values.firstName}
                 error={errors.firstName}
                 touched={touched.firstName} 
               />
 
-              <Input
+              <InputText
                 label="Last Name"
                 id="lastName"
                 name="lastName"
-                type={InputType.text}
+                type={InputTextType.text}
                 onChange={handleChange}
                 value={values.lastName}
                 error={errors.lastName}
                 touched={touched.lastName} 
               />
 
-              <Input
+              <InputText
                 label="Email"
                 id="email"
                 name="email"
-                type={InputType.email}
+                type={InputTextType.email}
                 onChange={handleChange}
                 value={values.email}
                 error={errors.email}
                 touched={touched.email} 
               />
 
-              <Input
+              <InputText
                 label="Phone number"
                 id="phone"
                 name="phone"
-                type={InputType.text}
+                type={InputTextType.text}
                 onChange={handleChange}
                 value={values.phone}
                 error={errors.phone}
@@ -166,14 +168,17 @@ export default function Contact() {
               />
 
               <RadioZone 
-                data={mockDataRadio} 
-                selected={values.subject} 
+                data={mockDataRadio}
+                value={values.subject}
                 onChange={handleChange}
-                title="Select Subject?"                
+                title="Select Subject?" 
+                name="subject"   
+                error={errors.subject}
+                touched={touched.subject}            
               />
 
-              <Input 
-                type={InputType.textarea}
+              <InputText 
+                type={InputTextType.textarea}
                 label="Message"                
                 id="message"
                 name="message"
@@ -193,13 +198,13 @@ export default function Contact() {
                   Send Message
                 </button>
 
-                <Image 
+                {/* <Image 
                   src={paperPlane}
                   height={112}
                   width={240} 
                   alt="paperPlane"
                   className={styles.paperPlane}
-                />
+                /> */}
 
               </div>
             </fieldset>

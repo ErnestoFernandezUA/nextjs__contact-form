@@ -1,12 +1,14 @@
 .radioZone {
   width: 100%;
+  position: relative;
 }
 
 .title {
   font-size: 14px;
   line-height: 20px;
-  font-weight: 600;
+  /* font-weight: 400; */
   margin-bottom: 15px;
+  color: #8D8D8D;
 }
 
 .radioZoneContainer {
@@ -17,6 +19,21 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.withValue {
+  color: #000;
+  font-weight: 500;
+}
+
+.error {
+  position: absolute;
+  bottom: -22px;
+  left: 0px;
+  color: red;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
 @media screen and (min-width: 768px) {
   .radioZone {
@@ -34,5 +51,17 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+
+  }
+
+  .error {
+    position: absolute;
+    bottom: 19px;
+    left: 0px;
+    color: red;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
   }
 }

@@ -26,7 +26,6 @@ interface NavigationItemProps extends NavLink {
   rootToggleHandler: (e: React.MouseEvent, value?: isVisible) => void;
   toggleHandler?: (e: React.MouseEvent, value?: isVisible) => void;
   isShowMenu?: isVisible;
-  // isMobile?: boolean;
   toggleHandlerMenu: (e: React.MouseEvent<Element, MouseEvent>, forceValue?: boolean) => void; 
 }
 
@@ -42,8 +41,6 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
 }) => {
   const pathname = usePathname();
   const isActive = pathname === path;
-
-  console.log(pathname, isActive, path)
   const isRoot = typeof toggleHandlerParent !== 'undefined';
   
   const [isShow, setIsShow] = useState<isVisible>(isVisible.hidden);
@@ -55,8 +52,6 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
 
   // for root 
   const toggleHandlerLabelSubLinks = (e: React.MouseEvent) => {
-    console.log('toggleHandlerLabelSubLinks', label, typeof toggleHandlerParent !== 'undefined')
-
     isRoot  ? toggleHandlerParent(e) : toggleHandler(e)
   };
 
