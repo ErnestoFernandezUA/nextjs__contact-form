@@ -7,8 +7,8 @@ import classNames from 'classnames';
 import { Navigation } from '../Navigation/Navigation';
 import closeMenu from './../../assets/images/closeMenu.icon.svg';
 import menu from './../../assets/images/menu.icon.svg';
-import styles from './Header.module.css';
 import { routesConfig } from '../Navigation/navigationConfig';
+import styles from './Header.module.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -29,7 +29,7 @@ export const Header = () => {
       <div className={styles.container}>
         <div className={classNames(styles.headerBody)}>
           <a
-            href="/"
+            href={routesConfig.home.path}
             className={classNames(styles.logo, inter.className,
             {[styles.active]: isShow})}>
             Logo Here
