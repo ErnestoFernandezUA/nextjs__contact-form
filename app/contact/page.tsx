@@ -1,9 +1,9 @@
 'use client'
 
 import Image from "next/image";
-import phone from '../assets/images/phone.icon.svg';
-import email from '../assets/images/email.icon.svg';
-import location from '../assets/images/location.icon.svg';
+import phoneIcon from '../assets/images/phone.icon.svg';
+import emailIcon from '../assets/images/email.icon.svg';
+import locationIcon from '../assets/images/location.icon.svg';
 import { contactData } from "./contactData";
 import styles from './page.module.css';
 import { Formik, Form } from 'formik';
@@ -94,20 +94,12 @@ export default function Contact() {
               </div>
               
               <div className={styles.links}>
-                <a href="">
-                  <Image src={phone} alt="Phone Icon" />
-                  {contactData.phone}
-                </a>
-
-                <a href="mailto:">
-                  <Image src={email} alt="Email Icon" />
-                  {contactData.email}
-                </a>
-
-                <a href="">
-                  <Image src={location} alt="Location Icon" />
-                  {contactData.address}
-                </a>
+                {contactData.map(el => (
+                  <a href={el.href} key={el.label}>
+                    <Image src={el.icon} alt={el.label} />
+                    {el.label}
+                  </a>
+                ))}
               </div>
 
               {/* <Image src={ellipse} alt="ellipse" className={styles.ellipse} /> */}

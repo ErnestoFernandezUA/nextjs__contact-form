@@ -84,6 +84,14 @@ export const Navigation:React.FC<NavigationProps> = ({
         />
 
         <NavigationItem 
+          {...routesConfig.shop} 
+          rootToggleHandler={rootToggleHandler} 
+          toggleHandler={rootToggleHandler} 
+          isShowMenu={isRootShow}
+          toggleHandlerMenu={toggleHandlerMenu}
+        />
+
+        <NavigationItem 
           {...routesConfig.about} 
           rootToggleHandler={rootToggleHandler} 
           toggleHandler={rootToggleHandler} 
