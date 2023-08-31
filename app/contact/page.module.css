@@ -129,13 +129,6 @@
   align-items: center;
 }
 
-/* 
-.ellipse {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-} */
-
 .whiteSide {
   padding: 30px 16px;
   box-sizing: border-box;
@@ -148,9 +141,6 @@
 }
 
 .submitContainer {
-  /* display: flex;
-  align-items: baseline;
-  justify-content: flex-end; */
   position: relative;
   height: 123px;
 }
@@ -166,14 +156,6 @@
   padding: 15px 48px;
   cursor: pointer;
 }
-
-/* .paperPlane {
-  position: absolute;
-  right: 150px;
-  bottom: -50px;
-  transform: rotate(-30deg);
-  transform-origin: 0% 50px;
-} */
 
 .paperPlane {
   height: 80px;
