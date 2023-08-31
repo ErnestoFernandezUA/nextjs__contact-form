@@ -6,6 +6,8 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import bigCircle from '../assets/images/bigCircle.svg';
 import smallCircle from '../assets/images/smallCircle.svg';
+import bigCircleMobile from '../assets/images/bigCircleMobile.svg';
+import smallCircleMobile from '../assets/images/smallCircleMobile.svg';
 import paperPlane from '../assets/images/paper-plane.png';
 import classNames from "classnames";
 import { Poppins } from "next/font/google";
@@ -17,6 +19,7 @@ import { RadioZone } from "../components/UI/RadioZone/RadioZone";
 import { maskPhone, unMaskPhone } from "../utils/maskPhoneNumber";
 import { socialLinks } from "../constants/socialLinks";
 import { SocialLinks } from "../components/SocialLinks/SocialLinks";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 
 const mockDataRadio = [
   {label: 'General Inquiry', value: '1'},
@@ -57,6 +60,9 @@ const SignUpSchema = Yup.object().shape({
 });
 
 export default function Contact() {
+  const matches = useMediaQuery('(min-width: 768px)');
+
+  console.log(matches)
 
   return (
     <section className={styles.contactUs}>
@@ -101,8 +107,16 @@ export default function Contact() {
                 <SocialLinks />
               </div>
 
-              <Image src={bigCircle} alt="bigCircle" className={styles.bigCircle} />
-              <Image src={smallCircle} alt="smallCircle" className={styles.smallCircle} />
+              <Image 
+                src={matches ? bigCircle : bigCircleMobile} 
+                alt={matches ? "bigCircle" : "bigCircleMobile"} 
+                className={matches ? styles.bigCircle : styles.bigCircleMobile} 
+              />
+              <Image 
+                src={matches ? smallCircle : smallCircleMobile} 
+                alt={matches ? "smallCircle" : "smallCircleMobile"} 
+                className={matches ? styles.smallCircle : styles.smallCircleMobile} 
+              />
 
               <div className={styles.socialIcons}>
                 <a href={socialLinks.twitter} target="_blank">

@@ -17,7 +17,7 @@ export default function NotFound() {
       <h1>404 - Page Not Found</h1>
 
       <Link href={'/'} className={styles.link}>Link to HomePage</Link>
-      
+
       <p onClick={() => router.back()} className={styles.link}>
         Link to previous route
       </p>

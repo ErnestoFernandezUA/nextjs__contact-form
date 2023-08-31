@@ -93,12 +93,27 @@
   gap: 10px;
 }
 
-.smallCircle {
-  display: none;
+.smallCircleMobile {
+  display: block;
+  position: absolute;
+  right: 40px;
+  bottom: 80px;
+  opacity: 0.5;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-name: rotateSmall;
 }
 
-.bigCircle {
-  display: none;
+.bigCircleMobile {
+  display: block;
+  position: absolute;
+  right: -90px;
+  bottom: -60px;
+  animation-duration: 3s;
+  animation-timing-function: linear;
+  animation-iteration-count: 1;
+  animation-name: rotateLarge;
 }
 
 .socialIcons {

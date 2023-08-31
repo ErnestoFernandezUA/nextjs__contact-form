@@ -17,7 +17,6 @@ export const Subscribe = () => {
       .required('Required'),
   });
 
-
   return (
     <Formik
       initialValues={{

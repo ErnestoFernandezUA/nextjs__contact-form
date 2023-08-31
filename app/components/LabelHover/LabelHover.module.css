@@ -4,6 +4,11 @@
   width: max-content;
 }
 
+.label > div {
+  display: flex;
+  align-items: center;
+}
+
 .label > div:nth-child(1) {
   position: relative;
   visibility: hidden;
