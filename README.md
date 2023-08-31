@@ -34,6 +34,7 @@ This project aims to implement a multi-page menu using Next.js, based on a desig
 - React
 - CSS/SCSS
 - Figma (for design mockups)
+- Vercel, Github
 
 ---
 

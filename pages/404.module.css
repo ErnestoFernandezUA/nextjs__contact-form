@@ -1,0 +1,19 @@
+.mainContent {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

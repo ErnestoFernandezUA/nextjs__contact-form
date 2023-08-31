@@ -24,8 +24,9 @@ export const Subscribe = () => {
         email: '',
       }}
       validationSchema={SubscribeSchema}
-      onSubmit={values => {
-        console.log(values);
+      onSubmit={(values, { resetForm }) => {
+        alert(`user ${values.email} subscribed!`);
+        resetForm();
       }} 
     >
       {({ values, errors, touched, handleChange }) => (

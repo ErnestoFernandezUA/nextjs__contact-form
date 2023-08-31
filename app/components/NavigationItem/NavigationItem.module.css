@@ -35,43 +35,6 @@
   background-color: transparent;
 }
 
-.rootSubLinks {
-}
-
-.subLinks {
-}
-
-.label {
-  position: relative;
-  overflow: hidden;
-  top: 0;
-  line-height: 32px;
-  height: 32px;
-}
-
-.label > div {
-  display: flex;
-  position: relative;
-  left: 0;
-}
-
-.label > div:nth-child(1) {
-  top: 0;
-}
-
-.label > div:nth-child(2) {
-  font-weight: bold;
-  top: 100%;
-}
-
-.label:hover > div:nth-child(1) {
-  top: -100%;
-}
-
-.label:hover > div:nth-child(2) {
-  top: -100%;
-}
-
 .active {
   font-weight: bold;
   color: red;

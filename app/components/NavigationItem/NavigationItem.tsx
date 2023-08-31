@@ -6,8 +6,9 @@ import { Roboto } from 'next/font/google';
 import Link from 'next/link'
 import { IoChevronDownOutline, IoChevronUpOutline } from "react-icons/io5";
 import classNames from 'classnames';
-import styles from './NavigationItem.module.css';
 import { isVisible } from '../Navigation/Navigation';
+import { LabelHover } from '../LabelHover/LabelHover';
+import styles from './NavigationItem.module.css';
 
 const roboto = Roboto({ 
   subsets: ['latin'],
@@ -75,10 +76,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
               roboto.className,
             { [styles.active] : isActive })}
           >
-            <div className={styles.label}>
-              <div>{children || label}</div>
-              <div>{children || label}</div>
-            </div>
+            <LabelHover>{children || label}</LabelHover>
             
             <div className={styles.arrow}>
               {(isShowParent 
@@ -118,10 +116,7 @@ export const NavigationItem: React.FC<NavigationItemProps> = ({
           styles.navigationItem, 
           { [styles.active] : isActive })}
       >
-        <div className={styles.label}>
-            <div>{children || label}</div>
-            <div>{children || label}</div>
-        </div>
+        <LabelHover>{children || label}</LabelHover>
       </Link>
     </div>
   )

@@ -4,7 +4,13 @@
   align-items: flex-start;
   gap: 10px;
   line-height: 24px;
-  width: fit-content;
+  width: auto;
+}
+
+.link p {
+  display: inline;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 @media screen and (min-width: 768px) {

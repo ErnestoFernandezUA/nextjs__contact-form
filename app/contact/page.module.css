@@ -23,14 +23,10 @@
 }
 
 .form {
-  /* display: flex;
-  flex-direction: column; */
-  /* align-items: stretch; */
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
   padding: 5px;
-  /* height: 687px; */
   box-sizing: border-box;
   user-select: none;
   overflow: hidden;
@@ -39,22 +35,22 @@
 }
 
 .form > * {
-  /* flex: 1; */
   border: none;
 }
 
 .blackSide {
-  text-align: center;
-  background-color: black;
-  /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
-  color: white;
+  position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 5px 5px 0 5px;
+  text-align: center;
   padding: 40px;
   box-sizing: border-box;
   overflow: hidden;
-  position: relative;
+
+  color: white;
+  background-color: black;
+ 
+  border-radius: 5px 5px 0 5px;
 }
 
 .blackSide h2 {
@@ -89,11 +85,20 @@
 }
 
 .links a {
+  max-width: 320px;
   line-height: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+.smallCircle {
+  display: none;
+}
+
+.bigCircle {
+  display: none;
 }
 
 .socialIcons {
@@ -109,12 +114,12 @@
   align-items: center;
 }
 
-
+/* 
 .ellipse {
   position: absolute;
   right: 0;
   bottom: 0;
-}
+} */
 
 .whiteSide {
   padding: 30px 16px;
@@ -128,12 +133,11 @@
 }
 
 .submitContainer {
-  display: flex;
+  /* display: flex;
   align-items: baseline;
-  justify-content: flex-end;
+  justify-content: flex-end; */
   position: relative;
-  height: 93px;
-  /* border: 1px solid red; */
+  height: 123px;
 }
 
 .submit {
@@ -148,12 +152,24 @@
   cursor: pointer;
 }
 
-.paperPlane {
+/* .paperPlane {
   position: absolute;
   right: 150px;
   bottom: -50px;
   transform: rotate(-30deg);
   transform-origin: 0% 50px;
+} */
+
+.paperPlane {
+  height: 80px;
+  width: 150px;
+  position: absolute;
+  right: 50%;
+  top: calc(106px - 50%);
+  transform: rotate(-30deg);
+  transform-origin: 100% 50px;
+  animation: fly 10s infinite cubic-bezier(0.4, 0.2, 0.2, 1);
+  animation-delay: 0s;
 }
 
 @media screen and (min-width: 768px) {
@@ -182,9 +198,9 @@
     border-radius: 10px;
     box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
     padding: 10px;
-    /* height: 687px; */
     max-width: 1196px;
     margin-bottom: 50px;
+    overflow: hidden;
   }
   
   .form > * {
@@ -198,7 +214,7 @@
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
-    box-shadow: 0px 0px 60px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
   
   .blackSide h2 {
@@ -248,20 +264,37 @@
     gap: 24px;
   }
   
-  .ellipse {
+  .smallCircle {
+    display: block;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 90px;
+    bottom: 100px;
+    opacity: 0.5;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-name: rotateSmall;
+  }
+
+  .bigCircle {
+    display: block;
+    position: absolute;
+    right: -60px;
+    bottom: -80px;
+    animation-duration: 3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-name: rotateLarge;
   }
   
   .whiteSide {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-content: flex-start;
+    align-content: start;
     padding: 50px;
-    gap: 40px 45px;
+    gap: 20px 45px;
     flex: 1;
-
+    padding: 10px 50px;
   }
   
   .whiteSide > :nth-child(n + 5) {
@@ -287,9 +320,68 @@
   
   .paperPlane {
     position: absolute;
-    right: 150px;
-    bottom: -50px;
+    right: 110px;
+    top: calc(106px - 50%);
     transform: rotate(-30deg);
-    transform-origin: 0% 50px;
+    transform-origin: 100% 50px;
+    animation: fly 10s infinite cubic-bezier(0.4, 0.2, 0.2, 1);
+    animation-delay: 0s;
+  }
+}
+
+@keyframes rotateSmall {
+  0% {
+    transform: rotate(0deg) translate(100px) rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg) translate(100px) rotate(-90deg);
+  }
+  50% {
+    transform: rotate(180deg) translate(80px) rotate(-180deg);
+  }
+  75% {
+    transform: rotate(270deg) translate(100px) rotate(-270deg);
+  }
+  100% {
+    transform: rotate(360deg) translate(0px) rotate(-360deg);
+  }
+}
+
+@keyframes rotateLarge {
+  0%, 100% {
+    transform: rotate(0deg) translate(00px) rotate(0deg);
+  }
+  25% {
+    transform: rotate(45deg) translate(50px) rotate(-45deg);
+  }
+  50% {
+    transform: rotate(90deg) translate(150px) rotate(-90deg);
+  }
+  75% {
+    transform: rotate(135deg) translate(50px) rotate(-135deg);
+  }
+}
+
+@keyframes fly {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  40% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }

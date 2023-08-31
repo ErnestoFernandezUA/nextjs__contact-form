@@ -1,15 +1,11 @@
 'use client'
 
 import Image from "next/image";
-import phoneIcon from '../assets/images/phone.icon.svg';
-import emailIcon from '../assets/images/email.icon.svg';
-import locationIcon from '../assets/images/location.icon.svg';
-import { contactData } from "./contactData";
 import styles from './page.module.css';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import signed from '../assets/images/signed.icon.svg';
-import ellipse from '../assets/images/ellipse.svg';
+import bigCircle from '../assets/images/bigCircle.svg';
+import smallCircle from '../assets/images/smallCircle.svg';
 import paperPlane from '../assets/images/paper-plane.png';
 import classNames from "classnames";
 import { Poppins } from "next/font/google";
@@ -81,9 +77,16 @@ export default function Contact() {
           message: '',
         }}
         validationSchema={SignUpSchema}
-        onSubmit={values => {
-          // same shape as initial values
-          console.log(values);
+        onSubmit={(values, { resetForm }) => {
+          const alertMessage = `
+            Thank you for contacting us, ${values.firstName} ${values.lastName}!
+            We have received your message and will get back to you at ${values.email} or ${values.phone}.
+            Subject: ${values.subject}
+            Message: ${values.message}
+          `;
+        
+          alert(alertMessage);
+          resetForm();
         }}
       >
         {({ values, errors, touched, handleChange }) => (
@@ -98,27 +101,19 @@ export default function Contact() {
                 <SocialLinks />
               </div>
 
-              {/* <Image src={ellipse} alt="ellipse" className={styles.ellipse} /> */}
+              <Image src={bigCircle} alt="bigCircle" className={styles.bigCircle} />
+              <Image src={smallCircle} alt="smallCircle" className={styles.smallCircle} />
 
               <div className={styles.socialIcons}>
-                <a 
-                  href={socialLinks.twitter} 
-                  target="_blank"
-                >
+                <a href={socialLinks.twitter} target="_blank">
                   <TwitterIcon theme={Theme.dark} />
                 </a>
 
-                <a 
-                  href={socialLinks.discord} 
-                  target="_blank"
-                >
+                <a href={socialLinks.discord} target="_blank">
                   <DiscordIcon theme={Theme.dark} />
                 </a>
 
-                <a 
-                  href={socialLinks.instagram} 
-                  target="_blank"
-                >
+                <a href={socialLinks.instagram} target="_blank">
                   <InstagramIcon theme={Theme.dark} />
                 </a>
               </div>
@@ -203,14 +198,11 @@ export default function Contact() {
                   Send Message
                 </button>
 
-                {/* <Image 
+                <Image 
                   src={paperPlane}
-                  height={112}
-                  width={240} 
                   alt="paperPlane"
                   className={styles.paperPlane}
-                /> */}
-
+                />
               </div>
             </fieldset>
           </Form>

@@ -1,8 +1,7 @@
-import { ChangeEvent } from 'react';
 import { InputRadio, InputRadioType } from '../InputRadio/InputRadio';
 import { Poppins } from 'next/font/google';
-import styles from './RadioZone.module.css';
 import classNames from 'classnames';
+import styles from './RadioZone.module.css';
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['500'] });
 interface RadioZoneProps {

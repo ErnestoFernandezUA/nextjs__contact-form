@@ -28,14 +28,9 @@
 .text {
   padding: 0;
   margin: 0;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: left; */
   position: relative;
-  /* border: 1px solid red; */
   box-sizing: content-box;
   width: 100%;
-
 }
 
 .text label {
@@ -56,7 +51,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: 35px;
-  /* border: none; */
   border-bottom: 1px solid #8D8D8D;
 }
 
