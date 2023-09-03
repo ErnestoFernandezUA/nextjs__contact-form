@@ -1,31 +1,35 @@
 .link {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
   line-height: 24px;
-  width: auto;
+  width: auto; */
 }
 
 .link p {
-  display: inline;
+  /* display: inline; */
   white-space: pre-wrap;
   word-wrap: break-word;
 }
 
 @media screen and (min-width: 768px) {
   .link {
-    display: flex;
+    /* display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 10px;
     line-height: 24px;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; */
+    /* width: min-content; */
+    /* border: 1px solid red; */
   }
   
   .link p {
     white-space: pre-wrap;
     word-wrap: break-word;
-    max-width: 300px;
+    /* max-width: 300px; */
+    width: fit-content;
+    /* border: 1px solid green; */
   }
 }

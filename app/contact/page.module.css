@@ -40,17 +40,23 @@
 
 .blackSide {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  padding: 40px;
   box-sizing: border-box;
   overflow: hidden;
-
+  text-align: center;
   color: white;
   background-color: black;
  
   border-radius: 5px 5px 0 5px;
+}
+
+.blackSideContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 40px;
+  z-index: 100;
 }
 
 .blackSide h2 {
@@ -68,10 +74,36 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
-.links {
+.socialLinks {
+
+}
+
+.socialLinks > * {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  line-height: 30px;
+  color: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  
+}
+
+.socialLinks > *:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.socialLinks > *:last-child {
+  margin-bottom: 58px;
+}
+
+/* .links {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -91,7 +123,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-}
+} */
 
 .smallCircleMobile {
   display: block;
@@ -200,20 +232,27 @@
     overflow: hidden;
   }
   
-  .form > * {
-  }
-  
   .blackSide {
     text-align: left;
     width: 491px;
     border-radius: 10px 10px 0 10px;
-    padding: 40px;
+    
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   }
   
+  .blackSideContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    padding: 40px;
+    z-index: 100;
+  }
+
   .blackSide h2 {
     color: #FFF;
     font-size: 28px;
@@ -229,28 +268,6 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-bottom: 111px;
-  }
-  
-  .links {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 50px;
-    color: #FFF;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-  }
-  
-  .links a {
-    line-height: 24px;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;    
-    gap: 25px;
-    width: fit-content;
   }
   
   .socialIcons {
@@ -270,6 +287,7 @@
     animation-timing-function: linear;
     animation-iteration-count: 1;
     animation-name: rotateSmall;
+    z-index: 5;
   }
 
   .bigCircle {
@@ -281,8 +299,26 @@
     animation-timing-function: linear;
     animation-iteration-count: 1;
     animation-name: rotateLarge;
+    z-index: 5;
   }
-  
+
+  .socialLinks > * {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: flex-start;
+    line-height: 30px;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .socialLinks > *:not(:last-child) {
+    margin-bottom: 50px;
+  }
+
   .whiteSide {
     display: grid;
     grid-template-columns: 1fr 1fr;

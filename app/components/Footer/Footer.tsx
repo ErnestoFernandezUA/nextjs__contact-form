@@ -17,7 +17,9 @@ export const Footer = () => {
         <div className={styles.footerBlock}>
           <h4>Reach Us</h4>
 
-          <SocialLinks />
+          <div className={styles.socialLinks}>
+            <SocialLinks />
+          </div>
         </div>
 
         <div className={styles.footerBlock}>

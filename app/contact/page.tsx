@@ -1,16 +1,16 @@
 'use client'
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import styles from './page.module.css';
+import { Poppins } from "next/font/google";
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
+import classNames from "classnames";
+
 import bigCircle from '../assets/images/bigCircle.svg';
 import smallCircle from '../assets/images/smallCircle.svg';
 import bigCircleMobile from '../assets/images/bigCircleMobile.svg';
 import smallCircleMobile from '../assets/images/smallCircleMobile.svg';
 import paperPlane from '../assets/images/paper-plane.png';
-import classNames from "classnames";
-import { Poppins } from "next/font/google";
 import { InputText, InputTextType } from "../components/UI/InputText/InputText";
 import { Theme, TwitterIcon } from "../components/UI/Icons/TwitterIcon";
 import { DiscordIcon } from "../components/UI/Icons/DiscordIcon";
@@ -20,6 +20,9 @@ import { maskPhone, unMaskPhone } from "../utils/maskPhoneNumber";
 import { socialLinks } from "../constants/socialLinks";
 import { SocialLinks } from "../components/SocialLinks/SocialLinks";
 import { useMediaQuery } from "../hooks/useMediaQuery";
+import { ValidationSchema } from "./validationSchema";
+import styles from './page.module.css';
+import { LabelHover } from "../components/LabelHover/LabelHover";
 
 const mockDataRadio = [
   {label: 'General Inquiry', value: '1'},
@@ -28,7 +31,7 @@ const mockDataRadio = [
   {label: 'General Inquiry', value: '4'},
 ];
 
-const propsMask = {
+const propsMaskPhoneNumber = {
   withBrackets: false, 
   positionSpaces: [1, 4, 8],
   countDigits: 11,
@@ -36,33 +39,14 @@ const propsMask = {
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['500'] });
 
-const SignUpSchema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('First Name is required'),
-  lastName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Last Name is required'),
-  email: Yup.string()
-    .email('Invalid email')
-    .required('Email is required'),
-  phone: Yup.number()
-    .integer()
-    .moreThan(10000000000, 'To short number')
-    .lessThan(99999999999, 'No correct number')
-    .required('Required'),
-  subject: Yup.string()
-    .required('Subject value required'),
-  message: Yup.string()
-    .required('Message is required'),
-});
 
 export default function Contact() {
+  const [isClient, setIsClient] = useState(false);
   const matches = useMediaQuery('(min-width: 768px)');
 
-  console.log(matches)
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <section className={styles.contactUs}>
@@ -82,7 +66,7 @@ export default function Contact() {
           subject: '',
           message: '',
         }}
-        validationSchema={SignUpSchema}
+        validationSchema={ValidationSchema}
         onSubmit={(values, { resetForm }) => {
           const alertMessage = `
             Thank you for contacting us, ${values.firstName} ${values.lastName}!
@@ -98,39 +82,48 @@ export default function Contact() {
         {({ values, errors, touched, handleChange }) => (
           <Form className={styles.form}>
             <fieldset className={styles.blackSide}>
-              <div>
-                <h2>Contact Information</h2>
-                <h3>Say something to start a live chat!</h3>
+              <div className={styles.blackSideContent}>
+                <div>
+                  <h2>Contact Information</h2>
+                  <h3>Say something to start a live chat!</h3>
+                </div>
+                
+                <div className={styles.socialLinks}>
+                  <SocialLinks />
+                </div>
+
+                <div className={styles.socialIcons}>
+                  <LabelHover>
+                    <a href={socialLinks.twitter} target="_blank">
+                      <TwitterIcon theme={Theme.dark} />
+                    </a>
+                  </LabelHover>
+
+                  <LabelHover>
+                    <a href={socialLinks.discord} target="_blank">
+                      <DiscordIcon theme={Theme.dark} />
+                    </a>
+                  </LabelHover>
+                  <LabelHover>
+                    <a href={socialLinks.instagram} target="_blank">
+                      <InstagramIcon theme={Theme.dark} />
+                    </a>
+                  </LabelHover>
+                </div>
               </div>
-              
-              <div className={styles.links}>
-                <SocialLinks />
-              </div>
 
-              <Image 
-                src={matches ? bigCircle : bigCircleMobile} 
-                alt={matches ? "bigCircle" : "bigCircleMobile"} 
-                className={matches ? styles.bigCircle : styles.bigCircleMobile} 
-              />
-              <Image 
-                src={matches ? smallCircle : smallCircleMobile} 
-                alt={matches ? "smallCircle" : "smallCircleMobile"} 
-                className={matches ? styles.smallCircle : styles.smallCircleMobile} 
-              />
+              {isClient && <Image 
+                  src={matches ? bigCircle : bigCircleMobile} 
+                  alt="BigCircle" 
+                  className={matches ? styles.bigCircle : styles.bigCircleMobile} 
+                />}
 
-              <div className={styles.socialIcons}>
-                <a href={socialLinks.twitter} target="_blank">
-                  <TwitterIcon theme={Theme.dark} />
-                </a>
-
-                <a href={socialLinks.discord} target="_blank">
-                  <DiscordIcon theme={Theme.dark} />
-                </a>
-
-                <a href={socialLinks.instagram} target="_blank">
-                  <InstagramIcon theme={Theme.dark} />
-                </a>
-              </div>
+              {isClient && 
+                <Image 
+                  src={matches ? smallCircle : smallCircleMobile} 
+                  alt="SmallCircle" 
+                  className={matches ? styles.smallCircle : styles.smallCircleMobile} 
+                />}
             </fieldset>
 
             <fieldset className={styles.whiteSide}>
@@ -177,8 +170,8 @@ export default function Contact() {
                 error={errors.phone}
                 touched={touched.phone}
 
-                mask={value => maskPhone({ value, ...propsMask })}
-                unMask={value => unMaskPhone({ value, ...propsMask })}
+                mask={value => maskPhone({ value, ...propsMaskPhoneNumber })}
+                unMask={value => unMaskPhone({ value, ...propsMaskPhoneNumber })}
               />
 
               <RadioZone 
