@@ -18,7 +18,9 @@
   opacity: 1;
   transition: all 0.1s ease-in-out;
   z-index: 5000;
+  font-weight: normal;
 }
+
 .label > div:nth-child(3) {
   position: absolute;
   top: 0; 

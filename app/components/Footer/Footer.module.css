@@ -1,6 +1,6 @@
 .footer {
   background-color: #000;
-  color: #fff;
+  color: rgba(255, 255, 255, 1);
   padding: 20px 20px 35px;
 }
 
@@ -29,6 +29,7 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
+  margin-bottom: 30px;
 }
 
 .footerBlock:last-child {
@@ -79,10 +80,6 @@
     border: 1px solid transparent;
   }
   
-  .footerBlock > * {
-    /* width: fit-content; */
-  }
-
   .footer h4 {
     font-size: 18px;
     font-style: normal;
@@ -96,7 +93,6 @@
   }
 
   .socialLinks > * {
-    /* border: 1px solid red; */
     display: flex;
     gap: 25px;
     align-items: flex-start;

@@ -77,10 +77,6 @@
   margin-bottom: 20px;
 }
 
-.socialLinks {
-
-}
-
 .socialLinks > * {
   display: flex;
   gap: 10px;
@@ -102,28 +98,6 @@
 .socialLinks > *:last-child {
   margin-bottom: 58px;
 }
-
-/* .links {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 15px;
-  color: #FFF;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 58px;
-}
-
-.links a {
-  max-width: 320px;
-  line-height: 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-} */
 
 .smallCircleMobile {
   display: block;
@@ -185,7 +159,7 @@
   border-radius: 5px;
   background: #000;
   box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.12);
-  padding: 15px 48px;
+  padding: 15px 0px;
   cursor: pointer;
 }
 
@@ -205,7 +179,6 @@
   .contactUs {
     margin: 0 auto;
   }
-
 
   .title {
     font-size: 40px;

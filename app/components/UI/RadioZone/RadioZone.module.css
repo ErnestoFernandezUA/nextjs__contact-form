@@ -15,8 +15,6 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .withValue {
